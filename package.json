@@ -1,22 +1,40 @@
 {
-  "name": "ghov",
+  "name": "@axelldev/ghov",
   "version": "0.1.0",
   "description": "GitHub profile overview in your terminal",
   "type": "module",
+  "license": "MIT",
+  "author": "axelldev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axelldev/github-overview.git"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "heatmap",
+    "contributions",
+    "activity",
+    "terminal"
+  ],
   "bin": {
     "ghov": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "commander": "^14.0.0",
-    "chalk": "^5.4.0"
+    "chalk": "^5.4.0",
+    "commander": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

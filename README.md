@@ -7,11 +7,13 @@ GitHub profile overview in your terminal. Displays a contribution heatmap and re
 Requires **Node.js 18+** and authentication with GitHub.
 
 ```bash
-git clone https://github.com/axelldev/git-overview.git
-cd git-overview
-npm install
-npm run build
-npm link
+npm install -g @axelldev/ghov
+```
+
+Or run directly without installing:
+
+```bash
+npx @axelldev/ghov
 ```
 
 ## Authentication
@@ -56,8 +58,14 @@ npm run dev    # watch mode — recompiles on changes
 npm start      # run without global link
 ```
 
+## Update
+
+```bash
+npm update -g @axelldev/ghov
+```
+
 ## Uninstall
 
 ```bash
-npm unlink -g ghov
+npm uninstall -g @axelldev/ghov
 ```
