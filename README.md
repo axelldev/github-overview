@@ -24,16 +24,29 @@ npm link
 ## Usage
 
 ```bash
-# Your own profile
+# Your own profile (shows last month by default)
 ghov
 
 # Another user's profile
 ghov octocat
+
+# Choose a time period
+ghov -p week      # last week
+ghov -p month     # last month (default)
+ghov -p 3m        # last 3 months
+ghov -p 6m        # last 6 months
+ghov -p year      # last year
 ```
+
+### Options
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `-p, --period <period>` | Time period: `week`, `month`, `3m`, `6m`, `year` | `month` |
 
 ### Output
 
-- **Contribution heatmap** — colored grid showing your activity over the past year, auto-sized to fit your terminal width.
+- **Contribution heatmap** — colored grid of your activity, auto-sized to fit your terminal width.
 - **Activity summary** — 3 paragraphs covering overall stats, most active repos, and latest actions.
 
 ## Development

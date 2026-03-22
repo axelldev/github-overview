@@ -51,9 +51,9 @@ function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-export function generateSummary(events: GitHubEvent[], calendar: ContributionCalendar): string {
+export function generateSummary(events: GitHubEvent[], calendar: ContributionCalendar, label = 'in the last year'): string {
   if (events.length === 0) {
-    return `  This user made ${calendar.totalContributions.toLocaleString()} contributions in the last year.\n\n  No recent public activity found.`;
+    return `  ${calendar.totalContributions.toLocaleString()} contributions ${label}.\n\n  No recent public activity found.`;
   }
 
   const repoCount = new Map<string, number>();
@@ -76,7 +76,7 @@ export function generateSummary(events: GitHubEvent[], calendar: ContributionCal
   if (issues) statParts.push(`${issues} issue interaction${issues !== 1 ? 's' : ''}`);
   if (reviews) statParts.push(`${reviews} code review${reviews !== 1 ? 's' : ''}`);
 
-  const p1 = `  ${calendar.totalContributions.toLocaleString()} contributions in the last year. Recent activity includes ${statParts.length > 0 ? statParts.join(', ') : `${events.length} events`} across ${repoCount.size} repositor${repoCount.size !== 1 ? 'ies' : 'y'}.`;
+  const p1 = `  ${calendar.totalContributions.toLocaleString()} contributions ${label}. Recent activity includes ${statParts.length > 0 ? statParts.join(', ') : `${events.length} events`} across ${repoCount.size} repositor${repoCount.size !== 1 ? 'ies' : 'y'}.`;
 
   // Paragraph 2: Top repos
   const topRepos = [...repoCount.entries()]

@@ -15,7 +15,7 @@ function colorBlock(hexColor: string): string {
   return chalk.hex(hexColor)(BLOCK);
 }
 
-export function renderHeatmap(calendar: ContributionCalendar): string {
+export function renderHeatmap(calendar: ContributionCalendar, periodLabel?: string): string {
   const weeks = calendar.weeks;
   const termWidth = process.stdout.columns || 80;
   const cellWidth = 2; // "██" = 2 chars
@@ -63,7 +63,7 @@ export function renderHeatmap(calendar: ContributionCalendar): string {
   lines.push('');
   const legend = LEVEL_COLORS.map(c => chalk.hex(c)(BLOCK)).join(' ');
   lines.push(
-    chalk.dim(`  ${calendar.totalContributions.toLocaleString()} contributions in the last year`) +
+    chalk.dim(`  ${calendar.totalContributions.toLocaleString()} contributions ${periodLabel ?? 'in the last year'}`) +
     '    ' +
     chalk.dim('Less ') + legend + chalk.dim(' More')
   );
